@@ -45,12 +45,9 @@ router.post("/",verifyToken, async (req, res) => {
 }
     );
 
-    
-    // return res.json({ "message": "try again", "tag": false })
-
 })
 
-router.post("/getAll",async (req,res)=>{
+router.get("/",async (req,res)=>{
     const events=await Event.find({}).sort({_id:-1});
     if(events.length>0){
         let obj=events;
@@ -59,9 +56,9 @@ router.post("/getAll",async (req,res)=>{
     return res.json({ "tag": false , "message":"No events found"});
 })
 
-// get
-router.post("/get",async (req,res)=>{
-    const {event_id}=req.body;
+// get by id
+router.get("/:event_id",async (req,res)=>{
+    const event_id=req.params.event_id;
     const event=await Event.findOne({_id:event_id});
     if(event){
         return res.json({ "tag": true, "message": event });

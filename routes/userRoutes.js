@@ -6,7 +6,7 @@ var bcrypt = require('bcryptjs');
 const User=require("../models/User");
 
 
-router.post("/auth", async (req, res) => {
+router.get("/auth", async (req, res) => {
     const token = req.body.token;
     try {
         const decoded = jwt.verify(token, process.env.SECRET_KEY);
@@ -78,26 +78,6 @@ router.post("/signup", async (req, res) => {
     }
 
 })
-
-// router.post("/getDetails", async (req, res) => {
-
-//     let { user_id } = req.body;
-
-//     const user = await User.findOne({ _id:user_id });
-
-//     if(user){
-//         let obj={
-//             email:user.email,
-//             name:user.name
-//         }
-//         return res.json({ "message": obj, "tag": true })
-//     }
-//     else{
-//         return res.json({ "message": "User doesnot exist", "tag": false })
-//     }
-
-    
-// })
 
 
 
