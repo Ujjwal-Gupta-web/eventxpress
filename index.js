@@ -26,8 +26,8 @@ mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true }).then((
 
 
 // APIS
-app.use("/api/user", userRoutes);
-app.use("/api/event", eventRoutes);
+app.use("/user", userRoutes);
+app.use("/event", eventRoutes);
 
 
 app.listen(port, () => {
