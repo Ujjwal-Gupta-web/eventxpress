@@ -6,7 +6,7 @@ var bcrypt = require('bcryptjs');
 const User=require("../models/User");
 
 
-router.get("/auth", async (req, res) => {
+router.post("/auth", async (req, res) => {
     const token = req.body.token;
     try {
         const decoded = jwt.verify(token, process.env.SECRET_KEY);
